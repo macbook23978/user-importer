@@ -1,0 +1,93 @@
+
+mac@mac-MacBookPro:~/workspace/user-importer$ mvn exec:java -Dexec.mainClass="com.example.App"
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:user-importer >----------------------
+[INFO] Building user-importer 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.6.2:java (default-cli) @ user-importer ---
+JSON inviato: {"firstName":"lisa","lastName":"esposito","email":"lespo@email.io","address":"Largo Alinari 12, Perugia"}
+POST Response: {"id":14,"firstName":"lisa","lastName":"esposito","email":"lespo@email.io","address":"Largo Alinari 12, Perugia","createdAt":"2025-11-10T22:55:21.650427623","updatedAt":"2025-11-10T22:55:21.650508262"}
+JSON inviato: {"firstName":"matteo","lastName":"conti","email":"m.conti@email.io","address":"Via S.Francesco 1, Assisi (PG)"}
+POST Response: {"id":15,"firstName":"matteo","lastName":"conti","email":"m.conti@email.io","address":"Via S.Francesco 1, Assisi (PG)","createdAt":"2025-11-10T22:55:22.291122645","updatedAt":"2025-11-10T22:55:22.291173124"}
+JSON inviato: {"firstName":"mario","lastName":"bros","email":"mario-bros@email.io","address":"Via Roma 1, Bari"}
+POST Response: {"id":16,"firstName":"mario","lastName":"bros","email":"mario-bros@email.io","address":"Via Roma 1, Bari","createdAt":"2025-11-10T22:55:22.335596872","updatedAt":"2025-11-10T22:55:22.335637271"}
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.242 s
+[INFO] Finished at: 2025-11-10T22:55:22+01:00
+[INFO] ------------------------------------------------------------------------
+mac@mac-MacBookPro:~/workspace/user-importer$ 
+
+
+
+##### TEST: RIPETIZIONE ESECUZIONE CON LO STESSO FILE CSV, ESITO ATTESO "ERRORE"
+##### Nota: L'errore indicato è un generico http500, riporta alla chiave duplicata del campo "email"
+
+mac@mac-MacBookPro:~/workspace/user-importer$ mvn exec:java -Dexec.mainClass="com.example.App"
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.example:user-importer >----------------------
+[INFO] Building user-importer 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- exec:3.6.2:java (default-cli) @ user-importer ---
+JSON inviato: {"firstName":"lisa","lastName":"esposito","email":"lespo@email.io","address":"Largo Alinari 12, Perugia"}
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Errore HTTP: status code: 500
+org.apache.hc.client5.http.HttpResponseException: status code: 500
+	at org.apache.hc.client5.http.impl.classic.AbstractHttpClientResponseHandler.handleResponse(AbstractHttpClientResponseHandler.java:68)
+	at org.apache.hc.client5.http.fluent.Response.handleResponse(Response.java:102)
+	at org.apache.hc.client5.http.fluent.Response.returnContent(Response.java:111)
+	at com.example.App.main(App.java:50)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+JSON inviato: {"firstName":"matteo","lastName":"conti","email":"m.conti@email.io","address":"Via S.Francesco 1, Assisi (PG)"}
+Errore HTTP: status code: 500
+org.apache.hc.client5.http.HttpResponseException: status code: 500
+	at org.apache.hc.client5.http.impl.classic.AbstractHttpClientResponseHandler.handleResponse(AbstractHttpClientResponseHandler.java:68)
+	at org.apache.hc.client5.http.fluent.Response.handleResponse(Response.java:102)
+	at org.apache.hc.client5.http.fluent.Response.returnContent(Response.java:111)
+	at com.example.App.main(App.java:50)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+JSON inviato: {"firstName":"mario","lastName":"bros","email":"mario-bros@email.io","address":"Via Roma 1, Bari"}
+Errore HTTP: status code: 500
+org.apache.hc.client5.http.HttpResponseException: status code: 500
+	at org.apache.hc.client5.http.impl.classic.AbstractHttpClientResponseHandler.handleResponse(AbstractHttpClientResponseHandler.java:68)
+	at org.apache.hc.client5.http.fluent.Response.handleResponse(Response.java:102)
+	at org.apache.hc.client5.http.fluent.Response.returnContent(Response.java:111)
+	at com.example.App.main(App.java:50)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+	at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+	at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.781 s
+[INFO] Finished at: 2025-11-10T23:03:35+01:00
+[INFO] ------------------------------------------------------------------------
+mac@mac-MacBookPro:~/workspace/user-importer$ 
+

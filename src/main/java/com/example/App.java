@@ -38,22 +38,25 @@ public class App {
                 String email = line[2];
                 String address = line[3];
 
-                // Trasforma in JSON
+                // Trasforma JSON
                 String json = gson.toJson(new User(firstName, lastName, email, address));
 
-                // Invia POST e gestisce server spento
+                // Invia POST 
                 try {
-                    Content response = Request.post(apiUrl)
-                            .bodyString(json, ContentType.APPLICATION_JSON)
-                            .execute()
-                            .returnContent();
-                    System.out.println("POST Response: " + response.asString());
-                } catch (IOException e) {
-                    System.out.println("Errore: server non disponibile all'URL " + apiUrl);
-                }
+                     System.out.println("JSON inviato: " + json); 
+                     Content response = Request.post(apiUrl)
+                           .bodyString(json, ContentType.APPLICATION_JSON)
+                           .execute()
+                           .returnContent();
+                     System.out.println("POST Response: " + response.asString());
+                     } catch (IOException e) {
+                       System.out.println("Errore HTTP: " + e.getMessage());
+                       e.printStackTrace(); 
+                     }
+
             }
         } catch (IOException | CsvValidationException e) {
-            System.out.println("Errore nella lettura del CSV: " + e.getMessage());
+            System.out.println("Errore lettura CSV: " + e.getMessage());
         }
     }
 
