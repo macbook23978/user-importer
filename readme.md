@@ -34,12 +34,12 @@
 ## Output
 
 - Log su console dell'operazione.
-- Vedi esempio LOG `user-importer.log`
+- Vedi file esempio `user-importer.log`
 
 ---
 
 ## Avvio esecuzione
 
-- Compilare il progetto Maven e esguire app (vedi file `start.sh`).
-- Argomenti opzionali: percorso del file CSV (default: ./users.csv)
-- Argomenti opzionali: URL dell'API (default: http://192.168.1.10:8080/users)
+- **Eseguire file** `start.sh`
+- Argomenti: file CSV `./users.csv`
+- Argomenti: base URL `http://192.168.1.10:8080/users`
