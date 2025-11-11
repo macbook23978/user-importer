@@ -41,5 +41,5 @@
 ## Avvio esecuzione
 
 - **Eseguire file** `start.sh`
-- Argomenti: file CSV `./users.csv`
-- Argomenti: base URL `http://192.168.1.10:8080/users`
+  - default file CSV `./users.csv`
+  - default base URL `http://192.168.1.10:8080/users`

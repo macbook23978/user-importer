@@ -39,9 +39,6 @@ mac@mac-MacBookPro:~/workspace/user-importer$ mvn exec:java -Dexec.mainClass="co
 [INFO] 
 [INFO] --- exec:3.6.2:java (default-cli) @ user-importer ---
 JSON inviato: {"firstName":"lisa","lastName":"esposito","email":"lespo@email.io","address":"Largo Alinari 12, Perugia"}
-SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 Errore HTTP: status code: 500
 org.apache.hc.client5.http.HttpResponseException: status code: 500
 	at org.apache.hc.client5.http.impl.classic.AbstractHttpClientResponseHandler.handleResponse(AbstractHttpClientResponseHandler.java:68)
